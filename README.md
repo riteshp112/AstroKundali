@@ -207,3 +207,28 @@ Logged-in View (Settings):
 "Language"
 
 "Logout"
+
+## Developer Setup
+
+To run the new React (Vite) frontend locally:
+
+- Install dependencies:
+
+```bash
+cd /workspaces/AstroKundali
+npm install
+```
+
+- Start dev server:
+
+```bash
+npm run dev
+```
+
+The app will be served by Vite (usually at `http://localhost:5173`).
+
+Next steps you may want me to implement:
+
+- Add Google Places autocomplete for the Place field.
+- Implement Kundali generation logic / backend integration.
+- Add routing and the app screens from the design brief.
