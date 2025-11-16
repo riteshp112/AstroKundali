@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sparkles, LogIn, Star } from 'lucide-react';
+import { Sparkles, LogIn, Star, Calendar, Clock, MapPin } from 'lucide-react';
 import { Button } from './ui/button';
+import { Card } from './ui/card';
+import type { KundaliData } from '../App';
 
 interface WelcomeScreenProps {
   isLoggedIn: boolean;
+  recentKundalis: KundaliData[];
 }
 
-export default function WelcomeScreen({ isLoggedIn }: WelcomeScreenProps) {
+export default function WelcomeScreen({ isLoggedIn, recentKundalis }: WelcomeScreenProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary via-[#3d4a6e] to-primary relative overflow-hidden">
       {/* Decorative elements */}
@@ -147,6 +150,44 @@ export default function WelcomeScreen({ isLoggedIn }: WelcomeScreenProps) {
             </motion.div>
 
             {/* Features */}
+            {recentKundalis.length > 0 && (
+              <motion.div
+                className="mt-16"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                <h3 className="text-xl text-white mb-6 text-center">Recent Kundalis</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                  {recentKundalis.slice(0, 3).map((kundali) => (
+                    <Link
+                      key={kundali.id}
+                      to={`/kundali/${kundali.id}`}
+                      state={{ kundali }}
+                    >
+                      <Card className="p-4 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors text-white">
+                        <h4 className="text-lg font-medium mb-2">{kundali.name}</h4>
+                        <div className="space-y-1 text-sm text-white/70">
+                          <div className="flex items-center gap-2">
+                            <Calendar className="w-4 h-4" />
+                            {new Date(kundali.dob).toLocaleDateString()}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Clock className="w-4 h-4" />
+                            {kundali.tob}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="w-4 h-4" />
+                            {kundali.pob}
+                          </div>
+                        </div>
+                      </Card>
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
             <motion.div
               className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
               initial={{ opacity: 0, y: 30 }}

@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Plus, Sparkles, Calendar, Clock, MapPin, LogOut, User } from 'lucide-react';
+import { Plus, Sparkles, Calendar, Clock, MapPin, LogOut, User, Trash2, Share2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
+import { deleteKundali } from '../utils/storage';
+import { shareKundali } from '../utils/pdfUtils';
+import { toast } from 'sonner';
 import type { KundaliData } from '../App';
 
 interface DashboardProps {
@@ -133,9 +136,30 @@ export default function Dashboard({ kundalis, onLogout }: DashboardProps) {
 }
 
 function KundaliCard({ kundali }: { kundali: KundaliData }) {
+  const navigate = useNavigate();
+
+  const handleDelete = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (window.confirm(`Are you sure you want to delete ${kundali.name}'s kundali?`)) {
+      deleteKundali(kundali.id);
+      toast.success('Kundali deleted successfully');
+      // Trigger a refresh by navigating
+      setTimeout(() => {
+        navigate(0);
+      }, 500);
+    }
+  };
+
+  const handleShare = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const url = shareKundali(kundali);
+    navigator.clipboard.writeText(url);
+    toast.success('Share link copied to clipboard!');
+  };
+
   return (
     <Link to={`/kundali/${kundali.id}`} state={{ kundali }}>
-      <Card className="p-6 bg-white hover:shadow-lg transition-all duration-300 border-border hover:border-accent-teal group cursor-pointer">
+      <Card className="p-6 bg-white hover:shadow-lg transition-all duration-300 border-border hover:border-accent-teal group cursor-pointer relative">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
@@ -180,13 +204,32 @@ function KundaliCard({ kundali }: { kundali: KundaliData }) {
           </p>
         </div>
 
-        {/* Hover Effect */}
-        <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+        {/* Hover Actions */}
+        <div className="mt-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
           <Button
             size="sm"
-            className="w-full bg-accent-teal hover:bg-accent-teal/90 text-primary"
+            className="flex-1 bg-accent-teal hover:bg-accent-teal/90 text-primary"
+            onClick={(e) => e.preventDefault()}
           >
             View Kundali
+          </Button>
+          <Button
+            size="sm"
+            variant="outline"
+            className="border-border hover:bg-blue-50"
+            onClick={handleShare}
+            title="Copy share link"
+          >
+            <Share2 className="w-4 h-4" />
+          </Button>
+          <Button
+            size="sm"
+            variant="outline"
+            className="border-border hover:bg-red-50"
+            onClick={handleDelete}
+            title="Delete kundali"
+          >
+            <Trash2 className="w-4 h-4" />
           </Button>
         </div>
       </Card>

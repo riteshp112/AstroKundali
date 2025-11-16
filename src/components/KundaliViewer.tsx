@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
-import { ArrowLeft, Download, Settings2 } from 'lucide-react';
+import { ArrowLeft, Download, Settings2, Share } from 'lucide-react';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Card } from './ui/card';
@@ -9,14 +9,31 @@ import PlanetsTab from './kundali-tabs/PlanetsTab';
 import DashaTab from './kundali-tabs/DashaTab';
 import DetailsTab from './kundali-tabs/DetailsTab';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import ShareModal from './ShareModal';
+import { getKundaliById } from '../utils/storage';
+import { generateKundaliPDF, shareKundali } from '../utils/pdfUtils';
+import { toast } from 'sonner';
 import type { KundaliData } from '../App';
 
 export default function KundaliViewer() {
   const { id } = useParams();
   const location = useLocation();
-  const kundali = location.state?.kundali as KundaliData;
-  
+  const [kundali, setKundali] = useState<KundaliData | null>(location.state?.kundali || null);
   const [chartStyle, setChartStyle] = useState<'north' | 'south' | 'east'>('north');
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [shareUrl, setShareUrl] = useState('');
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // If no kundali in state, try to load from storage
+    if (!kundali && id) {
+      const stored = getKundaliById(id);
+      if (stored) {
+        setKundali(stored);
+      }
+    }
+  }, [id, kundali]);
 
   // If no kundali data, show error
   if (!kundali) {
@@ -32,9 +49,22 @@ export default function KundaliViewer() {
     );
   }
 
-  const handleDownloadPDF = () => {
-    // Mock PDF download - in real app, generate PDF
-    alert('PDF download functionality would be implemented here');
+  const handleDownloadPDF = async () => {
+    try {
+      setIsGeneratingPDF(true);
+      await generateKundaliPDF(kundali, contentRef.current || undefined);
+      toast.success('PDF downloaded successfully!');
+    } catch (error) {
+      toast.error('Failed to generate PDF. Please try again.');
+    } finally {
+      setIsGeneratingPDF(false);
+    }
+  };
+
+  const handleShare = () => {
+    const url = shareKundali(kundali);
+    setShareUrl(url);
+    setShowShareModal(true);
   };
 
   return (
@@ -75,9 +105,18 @@ export default function KundaliViewer() {
                 </SelectContent>
               </Select>
 
-              <Button onClick={handleDownloadPDF} className="bg-accent-teal hover:bg-accent-teal/90 text-primary">
+              <Button onClick={handleShare} variant="outline" className="border-border">
+                <Share className="w-4 h-4 mr-2" />
+                Share
+              </Button>
+
+              <Button 
+                onClick={handleDownloadPDF} 
+                className="bg-accent-teal hover:bg-accent-teal/90 text-primary"
+                disabled={isGeneratingPDF}
+              >
                 <Download className="w-4 h-4 mr-2" />
-                Download PDF
+                {isGeneratingPDF ? 'Generating...' : 'Download PDF'}
               </Button>
             </div>
           </div>
@@ -111,6 +150,8 @@ export default function KundaliViewer() {
           </TabsContent>
         </Tabs>
       </div>
+
+      <ShareModal isOpen={showShareModal} shareUrl={shareUrl} onClose={() => setShowShareModal(false)} />
     </div>
   );
 }

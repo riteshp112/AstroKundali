@@ -7,6 +7,7 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Card } from './ui/card';
 import { toast } from 'sonner';
+import { saveKundali } from '../utils/storage';
 import type { KundaliData } from '../App';
 
 interface CreateKundaliProps {
@@ -78,9 +79,14 @@ export default function CreateKundali({ isLoggedIn, onSave }: CreateKundaliProps
       createdAt: new Date().toISOString(),
     };
 
+    // Always save to local storage
+    saveKundali(kundaliData);
+
     if (isLoggedIn && formData.saveToAccount) {
       onSave(kundaliData);
       toast.success('Kundali saved to your account!');
+    } else {
+      toast.success('Kundali created successfully!');
     }
 
     setLoading(false);
