@@ -1,165 +1,182 @@
-Kundali Maker App: UI/UX Design Brief
+# ✨ AstroKundali: Kundali Maker App
 
-This document outlines the design strategy, feature set, and screen-by-screen breakdown for a modern Kundali (Vedic Astrology Birth Chart) maker application.
+> **UI/UX Design Brief** — A comprehensive guide for building a modern Vedic Astrology Birth Chart maker.
 
-1. Project Overview
+---
 
-App Name (Suggestion): Nakshatra or AstroKundali
+## 1. 🌟 Project Overview
 
-Primary Goal: To provide a simple, accurate, and visually appealing platform for users to generate, view, and manage their Vedic astrology birth charts.
+### App Name
+**Nakshatra** or **AstroKundali**
 
-Target Audience:
+### Primary Goal
+To provide a simple, accurate, and visually appealing platform for users to generate, view, and manage their Vedic astrology birth charts.
 
-- Individuals in India and abroad interested in their personal astrology.
-- Families creating charts for newborns or for matchmaking.
-- Amateur astrology students and enthusiasts.
+### 👥 Target Audience
 
-2. Visual Design & Branding
+- 🌍 Individuals in India and abroad interested in their personal astrology
+- 👨‍👩‍👧 Families creating charts for newborns or for matchmaking
+- 📚 Amateur astrology students and enthusiasts
 
-Tone & Feel: Trustworthy, modern, clean, spiritual, and respectful of traditional aesthetics.
+## 2. 🎨 Visual Design & Branding
 
-Color Palette:
+### Tone & Feel
+✅ Trustworthy • Modern • Clean • Spiritual • Respectful of traditional aesthetics
 
-- Primary: Deep Indigo/Navy Blue (#2B3A67) - Represents the cosmos, depth, and trust.
-- Secondary: Muted Gold/Saffron (#FFB946) - Represents spirituality, knowledge, and prosperity.
-- Accent: Soft Teal (#48D1CC) or Maroon (#800000) - For call-to-action buttons (CTAs) and highlights.
-- Neutrals: Cream (#FFF9F0) for backgrounds (softer than pure white) and Dark Grey (#333333) for text.
+### 🎭 Color Palette
 
-Typography:
+| Role | Color | Hex | Meaning |
+|------|-------|-----|---------|
+| **Primary** | Deep Indigo/Navy Blue | `#2B3A67` | Cosmos, depth, trust |
+| **Secondary** | Muted Gold/Saffron | `#FFB946` | Spirituality, knowledge, prosperity |
+| **Accent 1** | Soft Teal | `#48D1CC` | CTAs & highlights |
+| **Accent 2** | Maroon | `#800000` | CTAs & highlights |
+| **Neutral (BG)** | Cream | `#FFF9F0` | Softer than pure white |
+| **Neutral (Text)** | Dark Grey | `#333333` | Body text |
 
-- Headings: A modern serif font with a touch of elegance (e.g., Playfair Display or Lora).
-- Body & UI: A clean, highly legible sans-serif font (e.g., Inter or Poppins).
+### 📝 Typography
 
-3. Core Features (User Stories)
+| Element | Font | Purpose |
+|---------|------|---------|
+| **Headings** | Playfair Display or Lora | Modern serif, elegant touch |
+| **Body & UI** | Inter or Poppins | Clean, highly legible sans-serif |
 
-As a new user, I want to:
+## 3. ⚙️ Core Features (User Stories)
 
-- Quickly generate a Kundali without creating an account (Guest Mode).
-- Create an account to save my profiles and access them later.
+### 🆕 As a new user, I want to:
+- ⚡ Quickly generate a Kundali without creating an account (Guest Mode)
+- 💾 Create an account to save my profiles and access them later
 
-As a returning user, I want to:
+### 🔄 As a returning user, I want to:
+- 📋 See a dashboard of all my saved profiles (e.g., "Me," "My Son," "My Partner")
+- ✏️ Create a new Kundali profile by entering Name, Date of Birth, Time of Birth, and Place of Birth
+- 🗺️ Easily find the Place of Birth using a search-friendly map/city finder (essential for lat/long)
 
-- See a dashboard of all my saved profiles (e.g., "Me," "My Son," "My Partner").
-- Create a new Kundali profile by entering a Name, Date of Birth, Time of Birth, and Place of Birth.
-- Easily find the Place of Birth using a search-friendly map/city finder (essential for lat/long).
+### 👁️ As a user viewing a Kundali, I want to:
+- 📊 See the main Lagna (Ascendant) chart clearly
+- 🔀 Toggle between different chart styles (North Indian, South Indian, East Indian)
+- ⭐ View basic planetary details (Planet, Rashi, Degree, Nakshatra)
+- ⏱️ Check my Vimshottari Dasha (major planetary periods)
+- 📅 See basic Panchang details for my birth (Tithi, Vara, Nakshatra, Yoga, Karana)
+- 📥 Download a simple PDF summary of my chart
 
-As a user viewing a Kundali, I want to:
+## 4. 🎬 Screen-by-Screen Breakdown (Wireframes)
 
-- See the main Lagna (Ascendant) chart clearly.
-- Toggle between different chart styles (North Indian, South Indian, East Indian).
-- View basic planetary details (Planet, Rashi, Degree, Nakshatra).
-- Check my Vimshottari Dasha (major planetary periods).
-- See basic Panchang details for my birth (Tithi, Vara, Nakshatra, Yoga, Karana).
-- Download a simple PDF summary of my chart.
+> This is the blueprint for your Figma screens.
 
-4. Screen-by-Screen Breakdown (Wireframes)
+### 🎬 Screen 1: Splash & Onboarding
 
-This is the blueprint for your Figma screens.
+**Components:**
+- 🎨 App Logo (e.g., a stylized constellation or lotus)
+- 📝 App Name & Tagline (e.g., "AstroKundali: Your cosmic map")
+- ✨ Simple animation or graphic
+- ⏱️ **Flow:** Automatically transitions to Home/Login after 2-3 seconds
 
-Screen 1: Splash & Onboarding
+### 🏠 Screen 2: Welcome / Home (Guest)
 
-Components:
+**Purpose:** Main entry point for new users
 
-- App Logo (e.g., a stylized constellation or lotus).
-- App Name & Tagline (e.g., "AstroKundali: Your cosmic map").
-- Simple animation or graphic.
-- Flow: Automatically transitions to the Home/Login screen after 2-3 seconds.
+**Components:**
+- 🎨 **Hero Section:** A beautiful, calming astrological graphic
+- 🔴 **Primary CTA:** A prominent button: "Create New Kundali"
+- ⚪ **Secondary CTA:** "Login / Sign Up" (less prominent, top-right)
+- 💡 **Value Proposition:** "Enter your birth details to discover your complete Vedic birth chart"
 
-Screen 2: Welcome / Home (Guest)
+### 📝 Screen 3: Create Kundali Form (Crucial Screen)
 
-Purpose: The main entry point for new users.
+**Purpose:** Collect necessary data with high accuracy
 
-Components:
+**Components:**
+- 📋 **Form Title:** "Create Your Kundali"
+- 👤 **Input Field:** "Full Name"
+- 📅 **Input Field:** "Date of Birth" (native calendar/date picker)
+- 🕐 **Input Field:** "Time of Birth" (native time picker)
+- 🌐 **Input Field:** "Place of Birth (City, Country)"
 
-- Hero Section: A beautiful, calming astrological graphic.
-- Primary CTA: A prominent button: "Create New Kundali".
-- Secondary CTA: "Login / Sign Up" (less prominent, perhaps top-right).
-- Value Proposition: "Enter your birth details to discover your complete Vedic birth chart."
+> ⚠️ **CRITICAL:** This must be powered by **Google Places API** (or similar) to autocomplete and fetch exact latitude/longitude automatically. Suggestions appear as user types.
 
-Screen 3: Create Kundali Form (Crucial Screen)
+- 💾 **Toggle:** "Save this profile to my account?" (if logged in)
+- 🟢 **Primary CTA:** "Generate Kundali" (with loading state)
 
-Purpose: To collect the necessary data with high accuracy.
+### 📊 Screen 4: Kundali View (Main Report)
 
-Components:
+**Purpose:** Display generated Kundali in a clear, tabbed interface
 
-- Form Title: "Create Your Kundali"
-- Input Field: "Full Name"
-- Input Field: "Date of Birth" (Use a native calendar/date picker).
-- Input Field: "Time of Birth" (Use a native time picker).
-- Input Field: "Place of Birth (City, Country)"
+**Components:**
+- 📄 **Header:** Profile Name, DoB, ToB, PoB
+- 📑 **Sub-Header (Tabs):** Core navigation
+  - `Chart` | `Planets` | `Dasha` | `Details`
+- ⚙️ **Settings Icon (Top Right):** Change Chart Style & "Download PDF"
 
-CRITICAL: This must be powered by a Google Places API (or similar) to autocomplete and fetch the exact latitude and longitude automatically. As the user types, suggestions appear.
+| Tab | Description |
+|-----|-------------|
+| **Tab 1: Chart** *(Default)* | Main Lagna chart + toggle for Navamsa (D9) |
+| **Tab 2: Planets** | Clean table: Planet \| Rashi \| House \| Degree \| Nakshatra \| Pada |
+| **Tab 3: Dasha** | Vimshottari Dasha + expandable list (Maha/Antar/Pratyantardasha) |
+| **Tab 4: Details** | Basic Panchang: Tithi, Vara, Nakshatra, Yoga, Karana |
 
-- Toggle: "Save this profile to my account?" (Appears if the user is logged in).
-- Primary CTA: "Generate Kundali" (This button should have a loading state).
+### 👤 Screen 5: My Profiles (Logged-in Home)
 
-Screen 4: Kundali View (Main Report)
+**Purpose:** Dashboard for logged-in users
 
-Purpose: To display the generated Kundali in a clear, tabbed interface.
+**Components:**
+- 📋 **Header:** "My Kundalis"
+- ➕ **Primary CTA:** "Add New Profile" (Floating Action Button)
+- 📑 **List:** Card-based layout of all saved profiles
+- 📄 **Each Card:** Name + DoB & ToB + "View Kundali >" link
 
-Components:
+### 🔐 Screen 6: Login / Settings
 
-- Header: Shows the Profile Name, DoB, ToB, and PoB.
-- Sub-Header (Tabs): This is the core navigation for the report.
-- Chart | Planets | Dasha | Details
-- Settings Icon (Top Right): Allows user to change Chart Style (North Indian, South Indian) and "Download PDF" option.
-- Tab 1: Chart (Default) — Main Lagna chart, with toggle for Navamsa (D9).
-- Tab 2: Planets — A clean table (Planet | Rashi | House | Degree | Nakshatra | Pada).
-- Tab 3: Dasha — Vimshottari Dasha (expandable list of Maha/Antar/Pratyantardasha).
-- Tab 4: Details — Basic Panchang info (Tithi, Vara, Nakshatra, Yoga, Karana).
+**Purpose:** Account management
 
-Screen 5: My Profiles (Logged-in Home)
+**Components:**
+- 🔑 **Login Options:** Email/Password, Sign in with Google, Sign in with Apple
+- ⚙️ **Logged-in View (Settings):**
+  - Edit Profile
+  - Default Chart Style (North/South)
+  - Language
+  - Logout
 
-Purpose: The dashboard for a logged-in user.
+---
 
-Components:
+## 💻 Developer Setup
 
-- Header: "My Kundalis"
-- Primary CTA: "Add New Profile" (Floating Action Button in the corner).
-- List: A card-based list of all saved profiles.
-- Each Card: Name, DoB & ToB, "View Kundali >" link.
-
-Screen 6: Login / Settings
-
-Purpose: Account management.
-
-Components:
-
-- Login Options: Email/Password, Sign in with Google, Sign in with Apple.
-- Logged-in View (Settings): "Edit Profile", "Default Chart Style" (North/South), "Language", "Logout".
-
-## Developer Setup
+### Quick Start
 
 To run the new React (Vite) frontend locally:
 
-- Install dependencies:
-
+**1️⃣ Install dependencies:**
 ```bash
 cd /workspaces/AstroKundali
 npm install
 ```
 
-- Start dev server:
-
+**2️⃣ Start dev server:**
 ```bash
 npm run dev
 ```
 
-The app will be served by Vite (usually at `http://localhost:5173`).
+📝 The app will be served by Vite at `http://localhost:5173`
 
-Next steps you may want me to implement:
+### 🎯 Next Implementation Steps
 
-- Add Google Places autocomplete for the Place field.
-- Implement Kundali generation logic / backend integration.
-- Add routing and the app screens from the README design.
+- [ ] Add Google Places autocomplete for the Place field
+- [ ] Implement Kundali generation logic / backend integration
+- [ ] Add routing and all app screens from the design
 
-### Environment variables (Google Maps Places)
+### 🔑 Environment Variables (Google Maps Places)
 
-If you want the Place field to autocomplete and automatically capture latitude/longitude, create a `.env` file at the project root with your Google Maps API key:
+To enable **Place field autocomplete** with real-time latitude/longitude capture:
 
+**1️⃣ Create `.env` file at project root:**
 ```bash
 # .env
 VITE_GOOGLE_MAPS_API_KEY=YOUR_API_KEY_HERE
 ```
 
-After creating or updating `.env`, restart the dev server (`npm run dev`). The frontend will load the Google Maps Places library and populate coordinates when a user selects a place.
+**2️⃣ Restart dev server:**
+```bash
+npm run dev
+```
+
+✅ The frontend will load Google Maps Places library and auto-populate coordinates when user selects a place.
