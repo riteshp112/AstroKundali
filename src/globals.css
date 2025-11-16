@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Force CSS recompilation */
+
+@layer base {
+  :root {
+    /* Color Palette */
+    --color-primary: #2B3A67;
+    --color-secondary: #FFB946;
+    --color-accent-teal: #48D1CC;
+    --color-accent-maroon: #800000;
+    --color-background: #FFF9F0;
+    --color-text: #333333;
+    --color-text-light: #666666;
+    --color-border: #E5E5E5;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Lora', Georgia, serif;
+    color: var(--color-primary);
+  }
+}
+
+@layer utilities {
+  .bg-background {
+    background-color: var(--color-background);
+  }
+  
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  
+  .text-primary {
+    color: var(--color-primary);
+  }
+  
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+  
+  .text-text {
+    color: var(--color-text);
+  }
+}
